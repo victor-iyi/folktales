@@ -9,8 +9,9 @@
 """
 from flask import Flask, render_template
 
+from helpers.config import *
 
-app = Flask(__name__)
+app = Flask(APP_NAME)
 
 @app.route('/')
 def index():

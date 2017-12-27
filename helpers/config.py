@@ -7,3 +7,5 @@
   
   Copyright © 2017. Victor. All rights reserved.
 """
+
+APP_NAME = 'folktales'
