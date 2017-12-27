@@ -9,10 +9,14 @@
 """
 from flask import Flask, render_template
 
-from helpers.config import *
+from .helpers import config
 
-app = Flask(APP_NAME)
+app = Flask(config.APP_NAME)
 
 @app.route('/')
 def index():
+    """
+    Home page
+    :return template
+    """
     return render_template('index.html')
