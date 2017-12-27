@@ -9,7 +9,7 @@
 """
 from flask import Flask, render_template
 
-from .helpers import config
+from helpers import config
 
 app = Flask(config.APP_NAME)
 
