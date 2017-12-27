@@ -9,6 +9,10 @@ __pycache__/
 .ipynb_checkpoints
 
 
+### SCSS template
+.sass-cache
+*.map
+
 ### JetBrains template
 .idea
 
