@@ -13,6 +13,7 @@ from helpers import config
 
 app = Flask(config.APP_NAME)
 
+
 @app.route('/')
 def index():
     """

@@ -40,7 +40,7 @@ def start():
         tagged = tag(sent)
         ne_bin = nltk.ne_chunk(tagged, binary=True)
         # ne = nltk.ne_chunk(tagged, binary=False)
-        acts = re.findall(r'\(NE\s(.*?)\/NNP', str(ne_bin))
+        acts = re.findall(r'\(NE\s(.*?)/NNP', str(ne_bin))
         nos = len(acts)
         if nos > 0:
             for act in acts:
