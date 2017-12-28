@@ -16,10 +16,6 @@ app = Flask(cgf.APP_NAME)
 
 @app.route('/')
 def index():
-    """
-    Home page
-    :return template
-    """
     return render_template('index.html')
 
 
