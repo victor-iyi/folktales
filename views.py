@@ -9,9 +9,9 @@
 """
 from flask import Flask, render_template
 
-from helpers import config
+from helpers import config as cgf
 
-app = Flask(config.APP_NAME)
+app = Flask(cgf.APP_NAME)
 
 
 @app.route('/')
