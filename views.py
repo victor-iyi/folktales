@@ -38,6 +38,6 @@ def no_sidebar():
     return render_template('no-sidebar.html')
 
 
-@app.route('/elements')
+@app.route('/elements/')
 def elements():
     return render_template('elements.html')
