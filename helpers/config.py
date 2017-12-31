@@ -11,5 +11,5 @@ import os
 
 APP_NAME = 'folktales'
 
-PROJECT_DIR = os.path.dirname(os.getcwd())
+PROJECT_DIR = os.path.join(os.path.dirname(os.getcwd()), APP_NAME)
 DATASET_DIR = os.path.join(PROJECT_DIR, 'datasets')

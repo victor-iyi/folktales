@@ -9,14 +9,15 @@
 """
 from flask import Flask, render_template
 
-from helpers import config as cgf
-
-app = Flask(cgf.APP_NAME)
+from helpers import config as cfg
+from model import data
+app = Flask(cfg.APP_NAME)
 
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    story_title = data.get_title()
+    return render_template('index.html', story_title=story_title)
 
 
 @app.route('/left-sidebar/')
