@@ -16,8 +16,9 @@ app = Flask(cfg.APP_NAME)
 
 @app.route('/')
 def index():
-    story_title = data.get_title()
-    return render_template('index.html', story_title=story_title)
+    stories = data.get_stories()
+    titles = data.get_data_titles()
+    return render_template('index.html', stories=stories,titles=titles)
 
 
 @app.route('/left-sidebar/')

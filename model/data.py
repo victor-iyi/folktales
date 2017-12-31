@@ -12,8 +12,26 @@ import os
 from helpers import config as cfg
 
 
-def get_title():
-    files = [os.path.basename(f).split('.')[0]
+def get_data_titles():
+    return [get_single_title(f) for f in get_files()]
+
+
+def get_single_title(file):
+    return os.path.basename(file).split('.')[0]
+
+
+def get_files():
+    files = (os.path.join(cfg.DATASET_DIR, f)
              for f in os.listdir(cfg.DATASET_DIR)
-             if f[0] != '.']
+             if f[0] != '.')
     return files
+
+
+def get_stories():
+    stories = {}
+    for file in get_files():
+        title = get_single_title(file)
+        with open(file, mode='rb') as f:
+            story = f.readlines()
+            stories[title] = story
+    return stories
