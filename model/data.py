@@ -9,7 +9,7 @@
 """
 import os
 
-from helpers import config as cfg
+from helpers import consts as cfg
 
 
 def get_data_titles():

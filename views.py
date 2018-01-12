@@ -7,18 +7,19 @@
   
   Copyright © 2017. Victor. All rights reserved.
 """
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for, request, abort
 
-from helpers import config as cfg
+from helpers.consts import APP_NAME
 from model import data
-app = Flask(cfg.APP_NAME)
+
+app = Flask(APP_NAME)
 
 
 @app.route('/')
 def index():
     stories = data.get_stories()
     titles = data.get_data_titles()
-    return render_template('index.html', stories=stories,titles=titles)
+    return render_template('index.html', stories=stories, titles=titles)
 
 
 @app.route('/left-sidebar/')
@@ -39,3 +40,10 @@ def no_sidebar():
 @app.route('/elements/')
 def elements():
     return render_template('elements.html')
+
+
+@app.route('/newsletter/', methods=['POST'])
+def newsletter():
+    if request.method == 'POST':
+        return redirect(url_for('index'))
+    return abort(405)

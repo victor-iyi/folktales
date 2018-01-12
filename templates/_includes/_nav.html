@@ -1,0 +1,24 @@
+<nav id="nav">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li>
+      <a href="#">Layouts</a>
+      <ul>
+        <li><a href="{{ url_for('left_sidebar') }}">Left Sidebar</a></li>
+        <li><a href="{{ url_for('right_sidebar') }}">Right Sidebar</a></li>
+        <li><a href="{{ url_for('no_sidebar') }}">No Sidebar</a></li>
+        <li>
+          <a href="#">Submenu</a>
+          <ul>
+            <li><a href="#">Option 1</a></li>
+            <li><a href="#">Option 2</a></li>
+            <li><a href="#">Option 3</a></li>
+            <li><a href="#">Option 4</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="{{ url_for('elements') }}">Elements</a></li>
+    <li><a href="#" class="button special">Sign Up</a></li>
+  </ul>
+</nav>
