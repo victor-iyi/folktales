@@ -1,6 +1,8 @@
-{% extends '_includes/_layout.html' %}
-{% block title %} Home {% endblock %}
-{% block body %}
+{% extends 'layouts/main.html' %}
+
+{% block title -%} Home {%- endblock %}
+
+{% block body -%}
   <!-- Banner -->
   <section id="banner">
     <div class="content">
@@ -17,7 +19,7 @@
   <!-- One -->
   <!--
   <section id="one" class="spotlight style1 bottom">
-    <span class="image fit main"><img src="{{ url_for('static', filename='images/pic02.jpg') }}" alt=""/></span>
+{#    <span class="image fit main"><img src="{{ url_for('static', filename='images/pic02.jpg') }}" alt=""/></span>#}
     <div class="content">
       <div class="container">
         <div class="row">
@@ -101,4 +103,4 @@
     </div>
   </section>
 
-{% endblock %}
+{%- endblock %}

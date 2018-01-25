@@ -1,4 +1,33 @@
-<header id="header">
-  <h1 id="logo"><a href="/">Folktales</a></h1>
-  {% include '_includes/_nav.html' %}
-</header>
+<!DOCTYPE html>
+<!--
+  @author Victor I. Afolabi
+
+  A.I. engineer/researcher & Software engineer
+  javafolabi@gmail.com
+
+  Created on 25 January, 2018 @ 3:13 PM.
+
+  Copyright © 2018. Victor. All rights reserved.
+-->
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <title> {{ title }} &bull; Folktales </title>
+
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+
+  <!--[if lte IE 8]><script src="{{ url_for('static', filename='js/ie/html5shiv.js') }}"></script><![endif]-->
+  <!--[if lte IE 9]><link rel="stylesheet" href="{{ url_for('static', filename='css/ie9.css') }}" /><![endif]-->
+  <!--[if lte IE 8]><link rel="stylesheet" href={{ url_for('static', filename='css/ie8.css') }}" /><![endif]-->
+</head>
+<body class="landing">
+<div id="page-wrapper">
+
+  <!-- Header -->
+  <header id="header">
+    <h1 id="logo"><a href="/">Folktales</a></h1>
+    {% include '_includes/_nav.html' %}
+  </header>
