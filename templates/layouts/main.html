@@ -1,6 +1,8 @@
-{%- include '_includes/_header.html' %}
+{% with title=self.title() -%}
+  {%- include '_includes/_header.html' %}
+{%- endwith %}
 
-  {% block body %}
-  {% endblock %}
+{% block body %}
+{% endblock %}
 
 {% include '_includes/_footer.html' %}

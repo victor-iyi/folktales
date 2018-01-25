@@ -1,8 +1,21 @@
 {%- extends 'layouts/generic.html' %}
 
 {% block title -%}Stories{%- endblock %}
-{% block description %}List of folktales stories{%- endblock %}
+{% block description %}List of folktales stories [{{ stories|length }}]{%- endblock %}
 
 {% block body -%}
-  This is the list of folktales stories
+  <ol>
+    {% for title, body in stories.items() %}
+      <li>
+        <h4><a href="{{ url_for('analysis', title=title) }}">{{ title|title }}</a></h4>
+        <p>{{ body[1]|capitalize }}</p>
+        <footer>
+          <ul class="actions">
+            <li><a href="{{ url_for('analysis', title=title) }}" class="button">Read More</a></li>
+          </ul>
+        </footer>
+      </li>
+      <hr/>
+    {% endfor %}
+  </ol>
 {%- endblock %}

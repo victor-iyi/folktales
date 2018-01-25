@@ -1,16 +1,7 @@
 <nav id="nav">
   <ul>
     <li><a href="{{ url_for('index') }}">Home</a></li>
-    <li><a href="{{ url_for('stories') }}">Stories</a></li>
-    <li>
-      <a href="#">Layouts</a>
-      <ul>
-        <li><a href="{{ url_for('left_sidebar') }}">Left Sidebar</a></li>
-        <li><a href="{{ url_for('right_sidebar') }}">Right Sidebar</a></li>
-        <li><a href="{{ url_for('no_sidebar') }}">No Sidebar</a></li>
-      </ul>
-    </li>
-    <li><a href="{{ url_for('elements') }}">Elements</a></li>
-    {#- <li><a href="#" class="button special">Sign Up</a></li> #}
+    <li><a href="{{ url_for('contact') }}">Contact</a></li>
+    <li><a href="{{ url_for('stories') }}" class="button special">Stories</a></li>
   </ul>
 </nav>

@@ -28,10 +28,10 @@
       </span>
       <div class="content">
         <header>
-          <h2><a href="{{ url_for('analysis', title=title) }}">{{ title }}</a></h2>
+          <h2><a href="{{ url_for('analysis', title=title) }}">{{ title|title }}</a></h2>
           <p>About {{ title|lower() }}</p>
         </header>
-        <p>{{ story[1]|truncate(255, end='...') }}</p>
+        <p>{{ story[1]|capitalize|truncate(255, end='...') }}</p>
         <ul class="actions">
           <li><a href="{{ url_for('analysis', title=title) }}" class="button">Read More</a></li>
         </ul>

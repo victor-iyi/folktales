@@ -23,12 +23,14 @@ def index():
 
 @app.route('/analysis/<title>')
 def analysis(title=None):
-    return render_template('analysis.html', story=title)
+    story = pre_processing.get_story_from_title(title)
+    return render_template('analysis.html', story=story)
 
 
 @app.route('/stories/')
 def stories():
-    return render_template('stories.html')
+    stories = pre_processing.get_stories()
+    return render_template('stories.html', stories=stories)
 
 
 @app.route('/newsletter/', methods=['POST'])
@@ -38,43 +40,8 @@ def newsletter():
     return abort(405)
 
 
-"""
-    ###########################################################################################
-    # +-------------------------------------------------------------------------------------+ #
-    # | +---------------------------------------------------------------------------------+ | #
-    # | | Development codes!
-    # | +---------------------------------------------------------------------------------+ | #
-    # +-------------------------------------------------------------------------------------+ #
-    ###########################################################################################
-"""
-
-
-################################################################################################
-# +———————————————————————————————————————————————————————————————————————————————————————————+
-# | Layouts
-# +———————————————————————————————————————————————————————————————————————————————————————————+
-################################################################################################
-
-@app.route('/left-sidebar/')
-def left_sidebar():
-    return render_template('left-sidebar.html')
-
-
-@app.route('/right-sidebar/')
-def right_sidebar():
-    return render_template('right-sidebar.html')
-
-
-@app.route('/no-sidebar/')
-def no_sidebar():
-    return render_template('no-sidebar.html')
-
-
-################################################################################################
-# +———————————————————————————————————————————————————————————————————————————————————————————+
-# | elements
-# +———————————————————————————————————————————————————————————————————————————————————————————+
-################################################################################################
-@app.route('/elements/')
-def elements():
-    return render_template('elements.html')
+@app.route('/contact/', methods=['GET', 'POST'])
+def contact():
+    if request.method == 'POST':
+        return redirect(url_for('index'))
+    return render_template('contact.html')

@@ -29,3 +29,6 @@ __pycache__/
 
 ### Daafiles
 datasets
+no-sidebar.html
+left-sidebar.html
+right-sidebar.html

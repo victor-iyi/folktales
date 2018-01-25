@@ -1,0 +1,35 @@
+{%- extends 'layouts/generic.html' %}
+
+{% block title %}Contact us {% endblock %}
+{% block description -%}{%- endblock %}
+
+{% block body -%}
+  <!-- Form -->
+  <section class="container">
+    <h3>Form</h3>
+    <form method="post" action="{{ url_for('contact') }}">
+      <div class="row uniform 50%">
+        <div class="6u 12u$(xsmall)">
+          <input type="text" name="name" id="name" value="" placeholder="Name"/>
+        </div>
+        <div class="6u$ 12u$(xsmall)">
+          <input type="email" name="email" id="email" value="" placeholder="Email"/>
+        </div>
+        <div class="12u$">
+          <textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
+        </div>
+        <div class="6u 6u(medium) 12u$(xsmall)">
+          <ul class="actions vertical">
+            <li><input type="submit" value="Send Message" class="button special fit"></li>
+          </ul>
+        </div>
+        <div class="6u$ 6u$(medium) 12u$(xsmall)">
+          <ul class="actions vertical small">
+            <li><input type="reset" value="Clear" class="button fit"></li>
+          </ul>
+        </div>
+      </div>
+    </form>
+  </section>
+
+{%- endblock %}

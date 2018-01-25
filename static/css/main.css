@@ -2564,7 +2564,10 @@ body.is-touch #banner {
 @media screen and (max-width: 1680px) {
   /* Basic */
   body, input, select, textarea {
-    font-size: 13pt; } }
+    font-size: 13pt; }
+
+  textarea {
+    resize: none; } }
 /* Large */
 @media screen and (max-width: 1280px) {
   /* Basic */
@@ -2920,6 +2923,9 @@ body.is-touch #banner {
         border-left: 0;
         display: block;
         margin: 0;
-        padding: 0; } }
+        padding: 0; }
+
+  textarea {
+    resize: none; } }
 
 /*# sourceMappingURL=main.css.map */
