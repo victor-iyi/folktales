@@ -11,5 +11,7 @@ from helpers.consts import APP_NAME
 
 app = Flask(APP_NAME)
 
+# noinspection PyUnresolvedReferences
 from views.controllers import *
+# noinspection PyUnresolvedReferences
 from views.forms import *
