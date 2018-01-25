@@ -30,8 +30,19 @@ def get_files():
 def get_stories(count=5):
     stories = {}
     for file in get_files()[:count]:
-        title = get_single_title(file)
-        with open(file, mode='rb') as f:
-            story = f.readlines()
-            stories[title] = story
+        story = get_story(file)
+        title = story['title']
+        body = story['body']
+        stories[title] = body
     return stories
+
+
+def get_story(file):
+    story = {
+        'title': get_single_title(file)
+    }
+    with open(file, mode='r', encoding='utf-8') as f:
+        body = f.readlines()
+        body = [line.strip() for line in body if len(line.strip()) > 1]
+        story['body'] = body
+    return story

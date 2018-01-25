@@ -16,43 +16,32 @@
     <a href="#one" class="goto-next scrolly">Next</a>
   </section>
 
-  <!-- Template -->
+  <!-- Stories -->
   {%- set ids = ['one', 'two', 'three', 'four', 'five', 'six'] %}
-  {% for title, story in stories.items() -%}
-    <section id="{{ ids[loop.index0] }}"
-             class="spotlight style{{ loop.cycle('1', '2', '3') }} {{ loop.cycle('right', 'left') }}">
-    <span class="image fit main">
-      <img src="{{ url_for('static', filename='images/pic0%s.jpg'|format(loop.revindex)) }}" alt="{{ title }}">
-    </span>
+  {% for title, story in stories.items() %}
+    <!-- {{ title }} -->
+    <section class="spotlight style{{ loop.cycle('1', '2', '3') }} {{ loop.cycle('right', 'left') }}"
+             id="{{ ids[loop.index0] }}">
+      <span class="image fit main">
+        <img src="{{ url_for('static', filename='images/pic0%s.jpg'|format(loop.revindex)) }}" alt="{{ title }}">
+      </span>
       <div class="content">
         <header>
-          <h2>{{ title }}</h2>
-          <p>{{ title }} description</p>
+          <h2><a href="{{ url_for('analysis', title=title) }}">{{ title }}</a></h2>
+          <p>About {{ title|lower() }}</p>
         </header>
-        <p>{{ story[:3] }}</p>
+        <p>{{ story[1]|truncate(255, end='...') }}</p>
         <ul class="actions">
           <li><a href="{{ url_for('analysis', title=title) }}" class="button">Read More</a></li>
         </ul>
       </div>
       <a href="#{{ ids[loop.index] }}" class="goto-next scrolly">Next</a>
     </section>
-  {%- endfor %}
+  {% endfor %}
 
-  <!-- Newsletter -->
-  <section id="six" class="wrapper style2 special fade">
-    <div class="container">
-      <header>
-        <h2>Subscribe to our Newsletter</h2>
-        <p>Wanna subscribe to our weekly newsletter? We do not spam!</p>
-      </header>
-      <form method="post" action="{{ url_for('newsletter') }}" class="container 50%">
-        <div class="row uniform 50%">
-          <div class="8u 12u$(xsmall)"><input type="email" name="email" id="email" placeholder="Your Email Address"/>
-          </div>
-          <div class="4u$ 12u$(xsmall)"><input type="submit" value="Subscribe" class="fit special"/></div>
-        </div>
-      </form>
-    </div>
-  </section>
+  {#- Newsletter #}
+  {% with id='six' -%}
+    {%- include "_includes/_newsletter.html" with context %}
+  {%- endwith %}
 
 {%- endblock body %}
