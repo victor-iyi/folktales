@@ -21,15 +21,15 @@ def get_single_title(file):
 
 
 def get_files():
-    files = (os.path.join(cfg.DATASET_DIR, f)
+    files = [os.path.join(cfg.DATASET_DIR, f)
              for f in os.listdir(cfg.DATASET_DIR)
-             if f[0] != '.')
+             if f[0] != '.']
     return files
 
 
-def get_stories():
+def get_stories(count=5):
     stories = {}
-    for file in get_files():
+    for file in get_files()[:count]:
         title = get_single_title(file)
         with open(file, mode='rb') as f:
             story = f.readlines()

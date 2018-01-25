@@ -10,21 +10,20 @@
 from flask import Flask, render_template, redirect, url_for, request, abort
 
 from helpers.consts import APP_NAME
-from model import data
+from model import pre_processing
 
 app = Flask(APP_NAME)
 
 
 @app.route('/')
 def index():
-    stories = data.get_stories()
-    titles = data.get_data_titles()
-    return render_template('index.html', stories=stories, titles=titles)
+    stories = pre_processing.get_stories(count=5)
+    return render_template('index.html', stories=stories)
 
 
-@app.route('/analysis/')
-def analysis():
-    return render_template('analysis.html')
+@app.route('/analysis/<title>')
+def analysis(title=None):
+    return render_template('analysis.html', story=title)
 
 
 @app.route('/stories/')

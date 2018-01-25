@@ -13,81 +13,33 @@
       </header>
       <span class="image"><img src="{{ url_for('static', filename='images/pic01.jpg') }}" alt=""/></span>
     </div>
-    <a href="#two" class="goto-next scrolly">Next</a>
+    <a href="#one" class="goto-next scrolly">Next</a>
   </section>
 
-  <!-- One -->
-  <!--
-  <section id="one" class="spotlight style1 bottom">
-{#    <span class="image fit main"><img src="{{ url_for('static', filename='images/pic02.jpg') }}" alt=""/></span>#}
-    <div class="content">
-      <div class="container">
-        <div class="row">
-          <div class="4u 12u$(medium)">
-            <header>
-              <h2>Odio faucibus ipsum integer consequat</h2>
-              <p>Nascetur eu nibh vestibulum amet gravida nascetur praesent</p>
-            </header>
-          </div>
-          <div class="4u 12u$(medium)">
-            <p>Feugiat accumsan lorem eu ac lorem amet sed accumsan donec.
-              Blandit orci porttitor semper. Arcu phasellus tortor enim mi
-              nisi praesent dolor adipiscing. Integer mi sed nascetur cep aliquet
-              augue varius tempus lobortis porttitor accumsan consequat
-              adipiscing lorem dolor.</p>
-          </div>
-          <div class="4u$ 12u$(medium)">
-            <p>Morbi enim nascetur et placerat lorem sed iaculis neque ante
-              adipiscing adipiscing metus massa. Blandit orci porttitor semper.
-              Arcu phasellus tortor enim mi mi nisi praesent adipiscing. Integer
-              mi sed nascetur cep aliquet augue varius tempus. Feugiat lorem
-              ipsum dolor nullam.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <a href="#two" class="goto-next scrolly">Next</a>
-  </section>
-  -->
-
-  <!-- Two -->
-  <section id="two" class="spotlight style2 right">
+  <!-- Template -->
+  {%- set ids = ['one', 'two', 'three', 'four', 'five', 'six'] %}
+  {% for title, story in stories.items() -%}
+    <section id="{{ ids[loop.index0] }}"
+             class="spotlight style{{ loop.cycle('1', '2', '3') }} {{ loop.cycle('right', 'left') }}">
     <span class="image fit main">
-      <img src="{{ url_for('static', filename='images/pic03.jpg') }}" alt=""/>
+      <img src="{{ url_for('static', filename='images/pic0%s.jpg'|format(loop.revindex)) }}" alt="{{ title }}">
     </span>
-    <div class="content">
-      <header>
-        <h2>{{ titles[0] }}</h2>
-        <p>Nunc commodo accumsan eget id nisi eu col volutpat magna</p>
-      </header>
-      <p>{{ stories[titles[0]][1] }}</p>
-      <ul class="actions">
-        <li><a href="#" class="button">Read More</a></li>
-      </ul>
-    </div>
-    <a href="#three" class="goto-next scrolly">Next</a>
-  </section>
+      <div class="content">
+        <header>
+          <h2>{{ title }}</h2>
+          <p>{{ title }} description</p>
+        </header>
+        <p>{{ story[:3] }}</p>
+        <ul class="actions">
+          <li><a href="{{ url_for('analysis', title=title) }}" class="button">Read More</a></li>
+        </ul>
+      </div>
+      <a href="#{{ ids[loop.index] }}" class="goto-next scrolly">Next</a>
+    </section>
+  {%- endfor %}
 
-  <!-- Three -->
-  <section id="three" class="spotlight style3 left">
-    <span class="image fit main bottom">
-      <img src="{{ url_for('static', filename='images/pic04.jpg') }}" alt=""/>
-    </span>
-    <div class="content">
-      <header>
-        <h2>{{ titles[4] }}</h2>
-        <p>Accumsan integer ultricies aliquam vel massa sapien phasellus</p>
-      </header>
-      <p>{{ stories[titles[4]][1] }}</p>
-      <ul class="actions">
-        <li><a href="#" class="button">Read More</a></li>
-      </ul>
-    </div>
-    <a href="#four" class="goto-next scrolly">Next</a>
-  </section>
-
-  <!-- Four -->
-  <section id="four" class="wrapper style2 special fade">
+  <!-- Newsletter -->
+  <section id="six" class="wrapper style2 special fade">
     <div class="container">
       <header>
         <h2>Subscribe to our Newsletter</h2>
@@ -103,4 +55,4 @@
     </div>
   </section>
 
-{%- endblock %}
+{%- endblock body %}
