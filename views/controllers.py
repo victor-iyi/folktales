@@ -1,18 +1,16 @@
 """
   @author Victor I. Afolabi
+
   A.I. Engineer & Software developer
   javafolabi@gmail.com
-  
-  Created on 27 December, 2017 @ 12:24 AM.
-  
-  Copyright © 2017. Victor. All rights reserved.
+
+  Created on 25 January, 2018 @ 8:26 PM.
+  Copyright © 2018. Victor. All rights reserved.
 """
-from flask import Flask, render_template, redirect, url_for, request, abort
+from flask import render_template, redirect, url_for, request
 
-from helpers.consts import APP_NAME
 from model import pre_processing
-
-app = Flask(APP_NAME)
+from views import app
 
 
 @app.route('/')
@@ -31,13 +29,6 @@ def analysis(title=None):
 def stories():
     stories = pre_processing.get_stories()
     return render_template('stories.html', stories=stories)
-
-
-@app.route('/newsletter/', methods=['POST'])
-def newsletter():
-    if request.method == 'POST':
-        return redirect(url_for('index'))
-    return abort(405)
 
 
 @app.route('/contact/', methods=['GET', 'POST'])
