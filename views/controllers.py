@@ -7,7 +7,7 @@
   Created on 25 January, 2018 @ 8:26 PM.
   Copyright © 2018. Victor. All rights reserved.
 """
-from flask import render_template, redirect, url_for, request
+from flask import render_template
 
 from model import pre_processing
 from views import app
@@ -31,8 +31,6 @@ def stories():
     return render_template('stories.html', stories=stories)
 
 
-@app.route('/contact/', methods=['GET', 'POST'])
+@app.route('/contact-us/')
 def contact():
-    if request.method == 'POST':
-        return redirect(url_for('index'))
     return render_template('contact.html')
