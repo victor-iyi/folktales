@@ -37,3 +37,4 @@ jinja2==2.10
 werkzeug==0.14.1
 flask==0.12.2
 nltk==3.2.4
+spacy==2.0.11

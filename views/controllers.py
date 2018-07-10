@@ -9,25 +9,25 @@
 """
 from flask import render_template
 
-from model import pre_processing
+from model import utils
 from views import app
 
 
 @app.route('/')
 def index():
-    stories = pre_processing.get_stories(count=5)
+    stories = utils.get_stories(count=5)
     return render_template('index.html', stories=stories)
 
 
 @app.route('/analysis/<title>')
 def analysis(title=None):
-    story = pre_processing.get_story_from_title(title)
+    story = utils.get_story_from_title(title)
     return render_template('analysis.html', story=story)
 
 
 @app.route('/stories/')
 def stories():
-    stories = pre_processing.get_stories()
+    stories = utils.get_stories()
     return render_template('stories.html', stories=stories)
 
 
