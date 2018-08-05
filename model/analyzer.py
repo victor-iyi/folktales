@@ -11,8 +11,9 @@ def main():
     pass
 
 
-def characters(entities):
-    matches = re.findall(r'\(PERSON\s(.*?)\/NNP\)', str(entities))
+def characters(tagged):
+    entities = nltk.ne_chunk(tagged, binary=True)
+    matches = re.findall(r'\(NE\s(\w*)/NNP', str(entities))
     return set(matches)
 
 
@@ -24,8 +25,9 @@ def lessons(story: str):
     return []
 
 
-def locations(entities):
-    matches = re.findall(r'\(GPE\s(.*?)\/NNP\)', str(entities))
+def locations(tagged):
+    entities = nltk.ne_chunk(tagged, binary=False)
+    matches = re.findall(r'\(GPE\s(\w*?)\/NNP\)', str(entities))
     return set(matches)
 
 
@@ -37,13 +39,10 @@ def analyze(story):
     token = nltk.word_tokenize(story)
     tagged = nltk.pos_tag(token)
 
-    entities = nltk.ne_chunk(tagged, binary=False)
-    print(type(entities))
-
     # Analysis results.
     results = {
-        'characters': characters(entities),
-        'locations': locations(entities), 'songs': songs(story),
+        'characters': characters(tagged),
+        'locations': locations(tagged), 'songs': songs(story),
         'proverbs': proverbs(tagged), 'lessons': lessons(story),
     }
 
