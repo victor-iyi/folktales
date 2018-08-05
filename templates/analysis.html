@@ -19,7 +19,12 @@
         <li>Lacinia mattis arcu nascetur lobortis.</li>
       </ul>
       <section>
-        <h4>Part of speech</h4>
+        <h4>Characters</h4>
+        <ul>
+          {% for character in results['characters'] -%}
+            <li>{{ character }}</li>
+          {%- endfor %}
+        </ul>
         <p>Sed tristique purus vitae volutpat commodo suscipit amet sed nibh. Proin a ullamcorper sed blandit. Sed
           tristique purus vitae volutpat commodo suscipit ullamcorper commodo suscipit amet sed nibh. Proin a
           ullamcorper sed blandit..</p>
@@ -49,7 +54,7 @@
     <!-- Content -->
     <section id="content">
       <a href="#" class="image fit"><img src="images/pic05.jpg" alt=""/></a>
-      <h3>Title: {{ story['body'][0] }}</h3>
+      <h3>Title: {{ story['title'] }}</h3>
       {% for body in story['body'][1:] %}
         <p>{{ body }}</p>
       {% endfor %}

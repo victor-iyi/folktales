@@ -9,7 +9,7 @@
 """
 from flask import render_template
 
-from model import utils
+from model import utils, analyzer
 from views import app
 
 
@@ -22,7 +22,11 @@ def index():
 @app.route('/analysis/<title>')
 def analysis(title=None):
     story = utils.get_story_from_title(title)
-    return render_template('analysis.html', story=story)
+    story_str = '\n'.join(story['body'])
+    results = analyzer.analyze(story_str)
+    print(results)
+
+    return render_template('analysis.html', story=story, results=results)
 
 
 @app.route('/stories/')

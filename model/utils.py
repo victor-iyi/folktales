@@ -52,8 +52,7 @@ def get_stories(count=None):
 
 
 def get_story_from_file(file):
-    """
-    Retrieve a single story.
+    """Retrieve a single story.
 
     :param file: str
         Story file location
@@ -69,8 +68,7 @@ def get_story_from_file(file):
 
 
 def get_story_file(title):
-    """
-    Retrieves the file for a story title
+    """Retrieves the file for a story title.
 
     :param title: str
         Story title.
