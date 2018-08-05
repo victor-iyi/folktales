@@ -12,7 +12,23 @@ def characters(tagged):
 
 def songs(story: str):
     """Get the songs in this story."""
-    return []
+    stories = story.split('\n')
+    _songs = []
+    prev_empty = True
+    for st in stories:
+        song = re.findall(r'(\w*?:)\s(.*?)', str(st))
+        if len(song) > 0:
+            if prev_empty:
+                _songs.append([st])
+            else:
+                _songs[-1].append(st)  # += '\n{}'.format(st)
+
+            prev_empty = False
+        else:
+            prev_empty = True
+
+        # _songs.append(' '.join(song))
+    return _songs
 
 
 def lessons(story: str):
@@ -23,7 +39,7 @@ def lessons(story: str):
 def locations(tagged):
     """Get locations in the story."""
     entities = nltk.ne_chunk(tagged, binary=False)
-    matches = re.findall(r'\(GPE\s(\w*?)\/NNP\)', str(entities))
+    matches = re.findall(r'\(GPE\s(\w*?)\/NN.+\)', str(entities))
     return list(sorted(set(matches)))
 
 

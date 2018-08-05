@@ -31,18 +31,24 @@
         <!-- Song analysis. -->
         {% if results['songs']|count -%}
           <h4>Songs</h4>
-          <p>There were {{ results['songs']|count }} song(s) in this story.</p>
+          <p>There were {{ results['songs']|count }} song(s) in this story:</p>
           <ul>
             {% for song in results['songs'] -%}
-              <li>{{ song }}</li>
+            <li>
+              {% for s in song %}
+                <span>{{ s }}</span>
+                <br/>
+              {% endfor %}
+              <p></p>
+            </li>
             {%- endfor %}
           </ul>
         {%- endif %}
-        <footer>
+        <!-- <footer>
           <ul class="actions">
             <li><a href="#" class="button">Learn More</a></li>
           </ul>
-        </footer>
+        </footer> -->
       </section>
 
       <p>In vestibulum massa quis arcu lobortis tempus. Nam pretium arcu in odio vulputate luctus. Suspendisse
