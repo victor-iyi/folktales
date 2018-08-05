@@ -8,6 +8,43 @@
   <div class="4u 12u$(medium)">
     <section id="sidebar">
       <h3>Analysis Breakdown</h3>
+      <!-- Character analysis. -->
+      <p><a href="">{{ story['title'] }}</a> is about <em><b>{{ results['characters']|count }} main characters</b></em>, namely:</p>
+      <ul>
+        {% for character in results['characters'] -%}
+        <li>{{ character }}</li>
+        {%- endfor %}
+      </ul>
+
+      <!-- Location analysis. -->
+      {% if results['locations']|count -%}
+        <h4>Locations</h4>
+        <ul>
+          {% for loc in results['locations'] -%}
+            <li>{{ loc }}</li>
+          {%- endfor %}
+        </ul>
+      {%- endif %}
+  
+      <hr/>
+      <section>
+        <!-- Song analysis. -->
+        {% if results['songs']|count -%}
+          <h4>Songs</h4>
+          <p>There were {{ results['songs']|count }} song(s) in this story.</p>
+          <ul>
+            {% for song in results['songs'] -%}
+              <li>{{ song }}</li>
+            {%- endfor %}
+          </ul>
+        {%- endif %}
+        <footer>
+          <ul class="actions">
+            <li><a href="#" class="button">Learn More</a></li>
+          </ul>
+        </footer>
+      </section>
+
       <p>In vestibulum massa quis arcu lobortis tempus. Nam pretium arcu in odio vulputate luctus. Suspendisse
         euismod lorem eget lacinia fringilla. Sed sed felis justo. Nunc sodales elit in laoreet aliquam. Nam
         gravida, nisl sit amet iaculis porttitor, risus nisi rutrum metus.</p>
@@ -19,48 +56,22 @@
         <li>Lacinia mattis arcu nascetur lobortis.</li>
       </ul>
     
-      <hr/>
-      <section>
-        <a href="#" class="image fit"><img src="images/pic06.jpg" alt=""/></a>
-        <h4>Characters</h4>
-         <p>Here are some characters in <strong>{{ story['title'] }}:<strong></p>
-          <ul>
-            {% for character in results['characters'] -%}
-            <li>{{ character }}</li>
-            {%- endfor %}
-          </ul>
-        <footer>
-          <ul class="actions">
-            <li><a href="#" class="button">Learn More</a></li>
-          </ul>
-        </footer>
-      </section>
-    
-      <hr/>
-      <section>
-        <a href="#" class="image fit"><img src="images/pic06.jpg" alt=""/></a>
-        <h4>Songs</h4>
-        <p>Sed tristique purus vitae volutpat commodo suscipit amet sed nibh. Proin a ullamcorper sed blandit. Sed
-          tristique purus vitae volutpat commodo suscipit ullamcorper sed blandit lorem ipsum dolore.</p>
-        <footer>
-          <ul class="actions">
-            <li><a href="#" class="button">Learn More</a></li>
-          </ul>
-        </footer>
-      </section>
     </section>
   </div>
-  <!-- Content -->
+  <!-- End analysis. -->
+
+  <!-- Main section. -->
   <div class="8u$ 12u$(medium) important(medium)">
 
-    <!-- Content -->
+    <!-- Story. -->
     <section id="content">
       <a href="#" class="image fit"><img src="images/pic05.jpg" alt=""/></a>
       <h3>Title: {{ story['title'] }}</h3>
       {% for body in story['body'][1:] %}
         <p>{{ body }}</p>
       {% endfor %}
-
     </section>
+
   </div>
+
 {%- endblock %}
