@@ -16,7 +16,7 @@ def songs(story: str):
     _songs = []
     prev_empty = True
     for st in stories:
-        song = re.findall(r'(\w*?:)\s(.*?)', str(st))
+        song = re.findall(r'^(\w*?:)\s(.*?)', str(st))
         if len(song) > 0:
             if prev_empty:
                 _songs.append([st])

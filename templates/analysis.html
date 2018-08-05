@@ -32,7 +32,7 @@
         {% if results['songs']|count -%}
           <h4>Songs</h4>
           <p>There were {{ results['songs']|count }} song(s) in this story:</p>
-          <ul>
+          <ol>
             {% for song in results['songs'] -%}
             <li>
               {% for s in song %}
@@ -42,7 +42,7 @@
               <p></p>
             </li>
             {%- endfor %}
-          </ul>
+          </ol>
         {%- endif %}
         <!-- <footer>
           <ul class="actions">
@@ -50,18 +50,6 @@
           </ul>
         </footer> -->
       </section>
-
-      <p>In vestibulum massa quis arcu lobortis tempus. Nam pretium arcu in odio vulputate luctus. Suspendisse
-        euismod lorem eget lacinia fringilla. Sed sed felis justo. Nunc sodales elit in laoreet aliquam. Nam
-        gravida, nisl sit amet iaculis porttitor, risus nisi rutrum metus.</p>
-      <ul>
-        <li>Faucibus orci lobortis ac adipiscing integer.</li>
-        <li>Col accumsan arcu mi aliquet placerat.</li>
-        <li>Lobortis vestibulum ut magna tempor massa nascetur.</li>
-        <li>Blandit massa non blandit tempor interdum.</li>
-        <li>Lacinia mattis arcu nascetur lobortis.</li>
-      </ul>
-    
     </section>
   </div>
   <!-- End analysis. -->
