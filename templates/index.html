@@ -17,10 +17,10 @@
     <a href="#one" class="goto-next scrolly">Next</a>
   </section>
 
-  <!-- Stories -->
+  <!-- Stories
   {%- set ids = ['one', 'two', 'three', 'four', 'five', 'six'] %}
   {% for title, story in stories.items() %}
-    <!-- {{ title }} -->
+    {# {{ title }} #}
     <section class="spotlight style{{ loop.cycle('1', '2', '3') }} {{ loop.cycle('right', 'left') }}"
              id="{{ ids[loop.index0] }}">
       <span class="image fit main">
@@ -39,6 +39,7 @@
       <a href="#{{ ids[loop.index] }}" class="goto-next scrolly">Next</a>
     </section>
   {% endfor %}
+-->
 
   {#- Newsletter #}
   {% with id='six' -%}
